@@ -15,6 +15,7 @@
     <link rel="preload" as="image" href="./images/loading/open.webp">
     <link rel="preload" as="image" href="./images/loading/lopen.webp">
     <link rel="preload" as="image" href="./images/loading/ropen.webp">
+    <link rel="preload" as="image" href="./images/banner-awake.png">
     <link rel="stylesheet" href="./styles/normalize.css">
     <link rel="stylesheet" href="./styles/var.css">
     <link rel="stylesheet" href="./styles/main.css">
@@ -190,12 +191,8 @@
                     <input type="radio" name="type" value="interaction" id="r2" required>
                     <label for="r2">Interaction</label>
                 </div>
-                <div class="row"> <!-- apparently this makes no difference. wonderful -->
-                    <input type="checkbox" name="obsolete" id="c4">
-                    <label for="c4">Is this association obsolete?</label>
-                    <input type="checkbox" name="throughout" id="c5">
-                    <label for="c5">Does this association occur throughout the event?</label>
-                </div>
+                <input type="checkbox" name="obsolete" id="c4">
+                <label for="c4">Is this association obsolete?</label>
             </div>
             <div>
                 <div>
@@ -208,10 +205,18 @@
                 </div>
                 <div>
                     <label>Instance<span class="req"> *</span></label>
-                    <input type="text" name="instance" 
-                    oninput="auto('r_assocdiage', false, 'events', 3); charvalid(this)"
-                    required pattern="^(events\/)+(\w|-){1,128}">
-                    <ul class="result" id="r_assocdiage"></ul>
+                    <div class="row">
+                        <select name="connective" id="asselect">
+                          <option value="in">in</option>
+                          <option value="throughout">throughout</option>
+                          <option value="according to">according to</option>
+                          <option value="implicit">&lt;implicit&gt;</option>
+                        </select>
+                        <input type="text" name="instance" 
+                        oninput="auto('r_assocdiage', false, 'events', 3); charvalid(this)"
+                        required pattern="^(events\/)+(\w|-){1,128}">
+                        <ul class="result" id="r_assocdiage"></ul>
+                    </div>
                 </div>
                 <div>
                     <label>Instance detail</label>
@@ -427,7 +432,7 @@ with help from my friends
             <div class="ftr_sep"></div>
             <div class="ftr_btn"><a href="#" class="btn_text" onclick="toggletextsize()">text size</a></div>
         </nav>
-        <nav class="ftr_sub" id="ftr_usr">
+        <nav class="ftr_sub ftr_usr">
             <div id="loginstr" class="admin none">logged in as <span id="username">guest</span></div>
             <div class="ftr_sep admin none"></div>
             <div class="ftr_btn admin none"><a href="#" class="btn_text" onclick="showpwchange()" id="pwa">change password</a></div>

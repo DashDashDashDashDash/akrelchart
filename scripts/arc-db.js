@@ -81,6 +81,7 @@ async function login(form) {
             document.querySelectorAll('.admin').forEach((ele) => {
                 ele.classList.toggle('none')
             })
+            document.querySelector('.ftr_usr').classList.toggle('ftr_admin')
             loggedin = true
         }
     } catch (e) {
@@ -100,6 +101,7 @@ async function logout() {
         document.querySelectorAll('.admin').forEach((ele) => {
             ele.classList.toggle('none')
         })
+        document.querySelector('.ftr_usr').classList.toggle('ftr_admin')
         loggedin = false
     }
 }
@@ -146,7 +148,6 @@ async function send(that) {
       fd.set('completion', fd.has('completion') ? true : false)
     } else if (that.id === "associationform") {
       fd.set('obsolete', fd.has('obsolete') ? true : false)
-      fd.set('throughout', fd.has('throughout') ? true : false)
     } else if (that.id === "characterform") {
       fd.set('global', fd.has('global') ? true : false)
       fd.set('npc', fd.has('npc') ? true : false)
@@ -195,11 +196,6 @@ async function send(that) {
           b.obsolete = true
         } else if (b.obsolete == "false") {
           b.obsolete = false
-        }
-        if (b.throughout == "true") {
-          b.throughout = true
-        } else if (b.throughout == "false") {
-          b.throughout = false
         }
       } else if (that.id === "characterform") {
                 if (b.global == "true") {
