@@ -1,0 +1,267 @@
+#footer {
+  font-size: 1.4rem;
+  position: absolute;
+  left: 1%;
+  right: 1%;
+  width: fit-content;
+  border-radius: 2px;
+  display: flex;
+  z-index: 2;
+  text-align: center;
+  justify-content: space-between;
+  backdrop-filter: blur(3.5px);
+}
+
+#banner {
+  max-height: 77.59px;
+}
+
+#banner:hover {
+  content: url("../assets/images/banner-awake.png");
+}
+
+#footer a {
+  text-decoration: none;
+}
+
+#footer p {
+  margin-block: 0;
+}
+
+#footer>nav {
+  flex-grow: 1;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.ftr_sub {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ftr_btn {
+  padding: 15px;
+  display: flex;
+  color: var(--btn-text);
+  font-family: "NuberNext Condensed";
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  transition: background 0.8s;
+}
+
+.btn-text:after {
+  border-left: 2px black;
+}
+
+.btn_text:hover {
+  text-decoration: none;
+  color: var(--btn-text);
+}
+
+.btn_text {
+  font-family: "NuberNext Condensed";
+  font-size: 1.5rem;
+  padding: 10px;
+  color: inherit;
+}
+
+.ftr_btn:hover {
+  color: var(--btn-text);
+  background: var(--btn-hvr1) radial-gradient(circle, transparent 1%, var(--btn-hvr1) 1%) center/15000%;
+}
+
+.ftr_btn:active {
+  background-color: var(--btn-active);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+#ftr_gen {
+  background: rgba(var(--gen1), 0.9);
+  background: linear-gradient(90deg, rgba(var(--gen1), 0.9) 0%, rgba(var(--gen2), 0.9) 59%);
+}
+
+.ftr_usr {
+  background: rgba(var(--usr1), 0.9);
+  background: linear-gradient(90deg, rgba(var(--usr1), 0.9) 0%, rgba(var(--usr2), 0.9) 59%);
+}
+
+.ftr_usr>*:first-child {
+  margin-left: 0.4rem
+}
+
+.ftr_admin {
+  background: rgba(var(--adm1), 0.9);
+  background: linear-gradient(rgba(var(--adm1), 0.9) 0%, rgba(var(--adm2), 0.9) 59%);
+
+  & .ftr_btn:hover {
+    color: var(--adm-hvr-text);
+    background: var(--adm-hvr) radial-gradient(circle, transparent 1%, var(--adm-hvr) 1%) center/15000%;
+  }
+
+  ;
+
+  & .btn_text:hover {
+    color: var(--adm-hvr-text);
+  }
+
+  ;
+
+  & .ftr_btn:active {
+    background-color: var(--adm-active);
+    background-size: 100%;
+    transition: background 0s;
+  }
+
+  & .ftr_sep {
+    background: rgba(255, 255, 255, 0.75);
+  }
+
+  ;
+}
+
+.ftr_sep {
+  width: 2px;
+  height: 40%;
+  background: rgba(148, 148, 148, 0.75);
+}
+
+#first_sep {
+  margin-left: 10px;
+}
+
+
+#loginstr {
+  padding: 12px;
+  display: flex;
+  color: var(--btn-text);
+  font-family: "NuberNext Condensed";
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+}
+
+#username {
+  background: black;
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: white;
+  font-family: "Bender";
+  font-weight: bold;
+  font-size: 1.45rem;
+  margin-left: 0.5rem;
+}
+
+#footer>div:first-child {
+  justify-content: start;
+}
+
+#footer>div:last-child {
+  justify-content: end;
+}
+
+.footer_v {
+  bottom: 2%;
+  animation: slideup 0.4s ease-in-out;
+}
+
+.footer_i {
+  bottom: -10%;
+  animation: slidedown 0.4s ease-in-out;
+}
+
+@keyframes slidedown {
+  0% {
+    bottom: 2%;
+  }
+
+  100% {
+    bottom: -10%;
+  }
+}
+
+@keyframes slideup {
+  0% {
+    bottom: -10%;
+  }
+
+  100% {
+    bottom: 2%;
+  }
+}
+
+#restoreui {
+  display: flex;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  bottom: 0;
+  padding: 0 1% 2% 1%;
+  align-items: end;
+  justify-content: start;
+}
+
+.restoreui_i {
+  left: -50%;
+  animation: slideleft 0.5s ease-in-out;
+}
+
+.restoreui_v {
+  left: 0;
+  animation: slideright 0.5s ease-in-out;
+}
+
+.hiddenlink { /* maybe used by something else */
+  opacity: 0;
+  color: #568eff;
+  animation: fadeout 0.2s linear;
+}
+
+.hiddenlink:hover {
+  opacity: 100;
+  animation: fadein 1s linear;
+}
+
+@keyframes slideleft {
+  0% {
+    right: 0;
+  }
+
+  100% {
+    right: -50%;
+  }
+}
+
+@keyframes slideright {
+  0% {
+    right: -50%;
+  }
+
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
