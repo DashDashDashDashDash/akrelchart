@@ -20,7 +20,7 @@ export default function MainGraph() {
         boundingBox: { x1: 0, y1: 0, w: 10000, h: 10000 },
         idealEdgeLength: 200,
         coolingFactor: 0.99
-      }).run()
+        }).run()
       }
     }
 
