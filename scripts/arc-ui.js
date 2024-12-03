@@ -317,9 +317,9 @@ function showlogin() {
 }
 
 function hidelogin() {
-  login = document.getElementById("login")
-  setvisibility(login, "i")
-  logo = login.children[0].children[1].children[0]
+  loginele = document.getElementById("login")
+  setvisibility(loginele, "i")
+  logo = loginele.children[0].children[1].children[0]
   logo.classList.toggle("login-logo-visible")
 }
 
@@ -561,3 +561,19 @@ function showabout() {
 function hideabout() {
   setvisibility(document.getElementById('about'), "i")
 }
+
+/* Not working
+var coll = document.getElementsByClassName("clps-btn");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("clps-active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+} */

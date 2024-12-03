@@ -49,7 +49,18 @@
       <ul id="result" class="result">
       </ul>
     </form>
-    <a href="#" onclick="unpopsearch()">cancel</a>
+    <div id="search-close-wrapper">
+      <a href="#" class="close-button" onclick="unpopsearch()">
+        <div class="in">
+          <div class="close-button-block"></div>
+          <div class="close-button-block"></div>
+        </div>
+        <div class="out">
+          <div class="close-button-block"></div>
+          <div class="close-button-block"></div>
+        </div>
+      </a>
+    </div>
   </div>
 
   <div id="cy"></div>
@@ -69,25 +80,31 @@
         <a href="#" class="" onclick="showdialog('chard', cy.$(':selected')[0])">edit properties</a>
       </div>
       <section>
-        <h2 class="popout_section">INSTANCES</h2>
-        <ul id="instancelist"></ul>
-        <a href="#" class="admin none" onclick="showdialog('instanced', cy.$(':selected')[0])">add instance</a>
+        <h2 class="popout_section clps-btn">INSTANCES</h2>
+        <div class="collaps-content">
+          <ul id="instancelist"></ul>
+          <a href="#" class="admin none" onclick="showdialog('instanced', cy.$(':selected')[0])">add instance</a>
+        </div>
       </section>
       <section>
-        <h2 class="popout_section">ASSOCIATIONS</h2>
-        <h3 class="popout_interact">Relations</h3>
-        <ul id="relations"></ul>
-        <h3 class="popout_interact">Interactions</h3>
-        <ul id="interactions"></ul>
-        <a href="#" class="admin none" onclick="showdialog('assocd', cy.$(':selected')[0])">add association</a>
+        <h2 class="popout_section clps-btn">ASSOCIATIONS</h2>
+        <div class="collaps-content">
+          <h3 class="popout_interact">Relations</h3>
+          <ul id="relations"></ul>
+          <h3 class="popout_interact">Interactions</h3>
+          <ul id="interactions"></ul>
+          <a href="#" class="admin none" onclick="showdialog('assocd', cy.$(':selected')[0])">add association</a>
+        </div>
       </section>
       <section>
-        <h2 class="popout_section">REFERENCES</h2>
-        <h3 class="popout_interact">Mentioned</h3>
-        <ul id="mentionby"></ul>
-        <h3 class="popout_interact">Mentions</h3>
-        <ul id="mentions"></ul>
-        <a href="#" class="admin none" onclick="showdialog('mentiond', cy.$(':selected')[0])">add mention</a>
+        <h2 class="popout_section clps-btn">REFERENCES</h2>
+        <div class="collaps-content">
+          <h3 class="popout_interact">Mentioned</h3>
+          <ul id="mentionby"></ul>
+          <h3 class="popout_interact">Mentions</h3>
+          <ul id="mentions"></ul>
+          <a href="#" class="admin none" onclick="showdialog('mentiond', cy.$(':selected')[0])">add mention</a>
+        </div>
       </section>
     </div>
   </div>
@@ -206,15 +223,26 @@
         </div>
       </div>
       <div class="row">
-        <div class="row">
-          <input type="radio" name="type" value="relation" id="r1" required>
-          <label for="r1">Relation</label>
+        <div class="row radio-block">
+          <div class="switches-container">
+            <input type="radio" id="r1" name="type" value="relation" required checked="checked" />
+            <input type="radio" id="r2" name="type" value="interaction" required/>*
+            <label for="r1">Relation</label>
+            <label for="r2">Interaction</label>
+            <span class="selected" aria-hidden="true"></span>
+            <div class="switch-wrapper">
+              <div class="switch">
+                <div>Relation</div>
+                <div>Interaction</div>
+              </div>
+            </div>
+          </div>
           <br>
-          <input type="radio" name="type" value="interaction" id="r2" required>
-          <label for="r2">Interaction</label>
         </div>
+        <div class="row">
         <input type="checkbox" name="obsolete" id="c4">
-        <label for="c4" title="Obsolete associations are associations that used to be valid in the past but aren't valid anymore.">Is this association obsolete?</label>
+        <label id="obs-label" for="c4" title="Obsolete associations are associations that used to be valid in the past but aren't valid anymore.">Is this association obsolete?</label>
+      </div>
       </div>
       <div>
         <div>
@@ -226,7 +254,7 @@
           <input type="text" name="subtype_reverse" placeholder="Use if subtype is incoherent when used in both ways">
         </div>
         <div>
-          <label>Instance<span class="req"> *</span></label>
+          <label id="inst-lab">Instance<span class="req"> *</span></label>
           <div class="row">
             <select name="connective" id="asselect">
               <option value="in">in</option>
@@ -259,8 +287,8 @@
   <div class="center" id="mentiond">
     <form class="dialogform" id="mentionform" onsubmit="send(this)" inert>
       <button type="button" class="close" onclick="closedialog()">╳</button>
-      <p class="blame"></p>
       <h1></h1>
+      <p class="blame"></p>
       <input type="hidden" name="_key">
       <div>
         <div>
@@ -410,8 +438,10 @@
             <label>Release date<span class="req"> *</span></label>
             <input type="date" name="releasedate" required>
           </div>
-          <input type="checkbox" name="completion" id="c3">
+          <div class="row">
+            <input type="checkbox" name="completion" id="c3">
           <label for="c3">Are this event's relations all properly checked?</label>
+        </div>
         </div>
       </div>
       <br>
