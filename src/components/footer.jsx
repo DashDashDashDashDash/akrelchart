@@ -43,7 +43,7 @@ export default function Footer() {
       <link rel="preload" as="image" src="../assets/images/banner-resp.png" />
       <link rel="preload" as="image" src="../assets/images/banner-resp-awake.png" />
       {visibility ? null :
-        // no need for restoreui_i anymore also maybe redesign how this shows up
+        // no need for restoreui_i anymore
         // inert bs: https://github.com/facebook/react/issues/17157#issuecomment-1687842532
         <div className="restoreui_v" id="restoreui" inert={visibility ? '' : undefined}>
           <a href="#" className="hiddenlink" onClick={() => { toggleVisible() }}>unhide</a>
