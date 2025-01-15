@@ -142,3 +142,73 @@ body {
 div {
   box-sizing: border-box;
 }
+
+.center {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 28px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.close {
+  position: absolute;
+  justify-self: end;
+  top: 8px;
+  right: 8px;
+  font-size: 8pt;
+  color: black;
+  border: 0px;
+  background-color: #0000;
+  cursor: pointer;
+}
+
+/*** here be vars ***/
+
+
+/* Generic colors */
+:root {
+  --lnk-hvr: #00aeff;
+  --green: #CCFF66;
+  --green-rgb: 204, 255, 102;
+}
+
+/* Box shadows */
+:root {
+  --elev-1: 0px 1px 3px 0px rgba(0,0,0,0.12), 0px 1px 2px 0px rgba(0,0,0,0.24);
+  --elev-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --elev-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --elev-1-glow: 0px 1px 3px 0px rgba(var(--adm1), 0.34), 0px 1px 2px 0px rgba(var(--adm1), 0.55);
+}
+
+/* NAVBAR COLORS */
+/* General area (ftr_gen) */
+:root {
+  --gen1: 25, 25, 26;
+  --gen2: 49, 49, 49;
+  --btn-hvr: #0796d7;
+  --btn-active: #008ed0;
+  --btn-text: white;
+}
+
+/* User area (ftr_usr), (ftr_admin) */
+:root {
+    --usr1: 62,62,62;
+    --usr2: 83,83,83;
+    --adm1: 7,150,215;
+    --adm2: 22,151,211;
+    --adm-hvr: #f7fcfd;
+    --adm-active: #d2f8ff;
+    --adm-hvr-text: black;
+}
+
+/* DIALOG AND POPOUT COLORS */
+
+:root {
+    --card-bg: rgba(238, 238, 238, 0.92);
+}
