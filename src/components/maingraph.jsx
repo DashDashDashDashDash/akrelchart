@@ -4,6 +4,7 @@ import LoadingScreen from './loadingscreen.jsx'
 import { CytoscapeContext } from "../cytoscapeContext"
 import { load } from "../db"
 import { MainGraphStyle } from "./graphconfig"
+import mobileCheck from "../mobilecheck.js"
 import './maingraph.css'
 
 export default function MainGraph() {
@@ -23,13 +24,18 @@ export default function MainGraph() {
         // we still need a lot more than just chars and chartochar relations but temporarypls
         cyRef.current.add(temporarypls[0]) // c
         cyRef.current.add(temporarypls[2]) // ctc
+        let coolFactor = 0.99
+        if (mobileCheck()) {
+          coolFactor = 0.93
+          setLoadWarnText('this may take a while on mobile devices')
+        }
         setLoadStateText("running layout")
         cyRef.current.elements('[category != "events"][category != "chartoevent"]').layout({
         name: 'cose',
         animate: false,
         boundingBox: { x1: 0, y1: 0, w: 10000, h: 10000 },
         idealEdgeLength: 200,
-        coolingFactor: 0.99 // mobile needs this set to like 0.95
+        coolingFactor: coolFactor
         }).run()
       }
     }
