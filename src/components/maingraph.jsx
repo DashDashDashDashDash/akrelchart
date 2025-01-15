@@ -23,7 +23,11 @@ export default function MainGraph() {
         }
         // we still need a lot more than just chars and chartochar relations but temporarypls
         cyRef.current.add(temporarypls[0]) // c
+        cyRef.current.add(temporarypls[1]) // e
         cyRef.current.add(temporarypls[2]) // ctc
+        cyRef.current.add(temporarypls[3]) // cte
+        cyRef.current.$('[category = "events"]').hide()
+        cyRef.current.$('[category = "chartoevent"]').hide()
         let coolFactor = 0.99
         if (mobileCheck()) {
           coolFactor = 0.93
