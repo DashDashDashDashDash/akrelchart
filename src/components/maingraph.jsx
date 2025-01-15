@@ -9,11 +9,17 @@ import './maingraph.css'
 export default function MainGraph() {
   let { cyRef } = useContext(CytoscapeContext)
   let [loadStateText, setLoadStateText] = useState("querying database") // huh
+  let [loadWarnText, setLoadWarnText] = useState('')
 
   useEffect(() => {
     async function loadgraph() {
       if (cyRef.current) {
-        let temporarypls = await load()
+        let temporarypls
+        try {
+          temporarypls = await load()
+        } catch (e) {
+          setLoadWarnText(e)
+        }
         // we still need a lot more than just chars and chartochar relations but temporarypls
         cyRef.current.add(temporarypls[0]) // c
         cyRef.current.add(temporarypls[2]) // ctc
@@ -38,7 +44,7 @@ export default function MainGraph() {
         setTimeout(function () {
           cyRef.current.center()
           setLoadStateText('done!')
-          //setWarnText('') no(t yet)
+          setLoadWarnText('')
         }, 0)
       })
     }
@@ -46,7 +52,7 @@ export default function MainGraph() {
 
   return (
     <>
-      <LoadingScreen loadstate={loadStateText}/>
+      <LoadingScreen loadstate={loadStateText} warnstate={loadWarnText}/>
       <CytoscapeComponent id="cy"
                           boxSelectionEnabled={false}
                           wheelSensitivity={0.1}

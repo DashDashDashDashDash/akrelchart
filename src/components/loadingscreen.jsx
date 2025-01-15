@@ -9,10 +9,9 @@ import './loadingscreen.css'
 // loading screen should be brought up whenever a layout runs again
 // so we shouldn't just assume it'll only run once...
 // ...but how to maintain that state...
-export default function LoadingScreen({ loadstate }) {
+export default function LoadingScreen({ loadstate, warnstate }) {
 
   let [ptilopSrc, setPtilopSrc] = useState(ptilopEyesClosed)
-  let [warnText, setWarnText] = useState('') // move this to its parent later
 
   let { cyRef } = useContext(CytoscapeContext)
 
@@ -23,7 +22,7 @@ export default function LoadingScreen({ loadstate }) {
         // do i still need to setTimeout here i wonder
         setTimeout(function () {
           cyRef.current.center()
-          setWarnText('') // no
+          warnstate = '' // yes?
         }, 0)
         let eggms = new Date().getMilliseconds()
         if (eggms % 60 === 0) {
@@ -45,7 +44,7 @@ export default function LoadingScreen({ loadstate }) {
         <p id="l2">NETWORK</p>
         <p>Please wait...</p>
         <p id="load">{loadstate}</p>
-        <p id="warn">{warnText}</p>
+        <p id="warn">{warnstate}</p>
         <p>the relations chart is currently a work in progress.</p>
         <p>data is incomplete and it can be incorrect!</p>
       </div>
