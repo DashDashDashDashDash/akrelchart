@@ -1,0 +1,13 @@
+/*  THIS SUCKS QUITE A LOT ACTUALLY! MAYBE!  *
+ * DO REEVALUATE IF THIS DESERVES TO BE HERE *
+ *  AND ALSO THINK ABOUT MAKING A COMPONENT  *
+ * FOR DIALOGS ONLY SO THIS MAKES MORE SENSE */
+
+.center > form, .center > .dialog {
+    position: relative;
+    pointer-events: initial;
+    border-radius: 3px;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(5px);
+    padding: 12px;
+}
