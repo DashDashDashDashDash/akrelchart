@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react'
 import { CytoscapeContext } from '../cytoscapeContext'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesDown } from '../assets/icons/footer/faAnglesDown'
 import { faMagnifyingGlass } from '../assets/icons/footer/faMagnifyingGlass'
@@ -9,6 +10,9 @@ import { faKey } from '../assets/icons/footer/faKey'
 import { faRightFromBracket } from '../assets/icons/footer/faRightFromBracket'
 import { faFilePen } from '../assets/icons/footer/faFilePen'
 import { faCircleQuestion } from '../assets/icons/footer/faCircleQuestion'
+
+import About from './about'
+
 import './footer.css'
 import ptiloBanner from '../assets/images/banner.png'
 
@@ -17,6 +21,7 @@ import ptiloBanner from '../assets/images/banner.png'
 export default function Footer() {
 
   let [visibility, setVisibility] = useState(true)
+  let [showAbout, setShowAbout] = useState(false)
   let {cyRef} = useContext(CytoscapeContext)
 
   // inline this instead of making it its own function?
@@ -91,7 +96,7 @@ export default function Footer() {
           <div className="ftr_btn admin none">
             <a href="#" className="btn_text" onClick="logout()" id="logout">
               <FontAwesomeIcon icon={faRightFromBracket} className="navico" />
-              <span class="resp-text">logout</span>
+              <span className="resp-text">logout</span>
             </a>
           </div>
           <div className="ftr_sep admin none"></div>
@@ -103,13 +108,17 @@ export default function Footer() {
           </div>
           <div className="ftr_sep"></div>
           <div className="ftr_btn">
-            <a href="#" className="btn_text" onClick="showabout()">
+            <a href="#" className="btn_text" onClick={() => setShowAbout(true)}>
               <FontAwesomeIcon icon={faCircleQuestion} className="navico" />
               <span className="resp-text">about</span>
             </a>
           </div>
         </nav>
       </div>
+
+      {!showAbout ? null :
+       <About show={showAbout} close={() => setShowAbout(!showAbout)}/>
+      }
     </>
   )
 }
