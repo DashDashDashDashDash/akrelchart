@@ -7,12 +7,8 @@ import "./dialog.css"
 import "./about.css"
 import AboutBanner from '../assets/images/login-logo.svg'
 
-export default function About({show, close}) {
+export default function About({close}) {
 
-  // pretty sure i need to store this show variable here...
-  if (!show) {
-    return
-  }
   return (
     <div className="center about" id="about">
       <div className="dialog">

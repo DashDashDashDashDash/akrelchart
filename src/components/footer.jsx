@@ -137,8 +137,10 @@ export default function Footer() {
         </nav>
       </div>
 
-      {!showAbout ? null :
-       <About show={showAbout} close={() => {setShowAbout(!showAbout)}}/>
+
+      {// apparently this is how you do this and i hate it too
+       !showAbout ? null :
+       <About close={() => {setShowAbout(!showAbout)}}/>
       }
 
     </>
