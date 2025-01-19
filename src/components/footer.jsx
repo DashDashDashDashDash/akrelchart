@@ -18,6 +18,9 @@ import './footer.css'
 import ptiloBanner from '../assets/images/banner.png'
 
 // dialogs that are brought up by the footer should be the footer's children...
+// but i can't really use the children prop notation to just nest the children
+// as jsx cause they have this functionality to show and hide themselves...
+
 // logging in requires more context to be used. i'll take care of that later
 export default function Footer() {
 
@@ -135,8 +138,9 @@ export default function Footer() {
       </div>
 
       {!showAbout ? null :
-       <About show={showAbout} close={() => setShowAbout(!showAbout)}/>
+       <About show={showAbout} close={() => {setShowAbout(!showAbout)}}/>
       }
+
     </>
   )
 }

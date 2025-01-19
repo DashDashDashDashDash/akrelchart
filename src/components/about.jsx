@@ -7,7 +7,7 @@ import "./dialog.css"
 import "./about.css"
 import AboutBanner from '../assets/images/login-logo.svg'
 
-export default function About({show, closeAbout}) {
+export default function About({show, close}) {
 
   // pretty sure i need to store this show variable here...
   if (!show) {
@@ -16,7 +16,7 @@ export default function About({show, closeAbout}) {
   return (
     <div className="center about" id="about">
       <div className="dialog">
-        <button type="button" className="close" onClick={() => closeAbout}>╳</button>
+        <button type="button" className="close" onClick={close}>╳</button>
         <div id="about-logo">
           <img id="about-banner" src={AboutBanner}/>
         </div>
