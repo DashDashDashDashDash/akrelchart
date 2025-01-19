@@ -44,10 +44,10 @@
   }
 
   #banner {
-    content: url("../images/banner-resp.png");
+    content: url("../assets/images/banner-resp.png");
   }
   #banner:hover {
-    content: url("../images/banner-resp-awake.png") !important;
+    content: url("../assets/images/banner-resp-awake.png") !important;
   }
 }
 
