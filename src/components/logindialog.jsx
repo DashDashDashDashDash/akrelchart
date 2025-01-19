@@ -46,7 +46,7 @@ export default function Login({close}) {
           <div id="loginform-inner">
             <div className="login-group">
               <label className="login-label">username:</label>
-              <input id="login-usr" type="text" name="user" onChange={(e) => {checklogin(e)}} />
+              <input autoFocus id="login-usr" type="text" name="user" onChange={(e) => {checklogin(e)}} />
             </div>
             <div className="login-group">
               <label className="login-label">password:</label>
