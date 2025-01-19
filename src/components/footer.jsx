@@ -10,6 +10,7 @@ import { faKey } from '../assets/icons/footer/faKey'
 import { faRightFromBracket } from '../assets/icons/footer/faRightFromBracket'
 import { faFilePen } from '../assets/icons/footer/faFilePen'
 import { faCircleQuestion } from '../assets/icons/footer/faCircleQuestion'
+import { faAnglesUp } from '../assets/icons/footer/faAnglesUp'
 
 import About from './about'
 
@@ -50,9 +51,26 @@ export default function Footer() {
       {visibility ? null :
         // no need for restoreui_i anymore
         // inert bs: https://github.com/facebook/react/issues/17157#issuecomment-1687842532
-        <div className="restoreui_v" id="restoreui" inert={visibility ? '' : undefined}>
-          <a href="#" className="hiddenlink" onClick={() => { toggleVisible() }}>unhide</a>
-        </div>
+       <>
+         <div id="restoreui-area">
+           <div className="restoreui_v" id="restoreui" inert={visibility ? '' : undefined}>
+             <a href="#" onClick={() => { toggleVisible() }}>
+               <div id="unhider">
+                 <FontAwesomeIcon icon={faAnglesUp} size={"2xl"} />
+               </div>
+             </a>
+           </div>
+         </div>
+
+         <div id="ripple-area">
+           <div className="ripple">
+             <div className="ripple-in">
+               <img id="rippleRing" src="images/ripple-ring.svg"/>
+               <img id="rippleCircle" src="images/ripple-circle.svg"/>
+             </div>
+           </div>
+         </div>
+       </>
       }
       <div className={visibility ? 'footer_v' : 'footer_i'} id="footer">
         <nav className="ftr_sub" id="ftr_gen">
