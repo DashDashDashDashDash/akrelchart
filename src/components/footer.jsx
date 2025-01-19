@@ -13,6 +13,7 @@ import { faCircleQuestion } from '../assets/icons/footer/faCircleQuestion'
 import { faAnglesUp } from '../assets/icons/footer/faAnglesUp'
 
 import About from './about'
+import Login from './logindialog'
 
 import './footer.css'
 import ptiloBanner from '../assets/images/banner.png'
@@ -24,8 +25,11 @@ import ptiloBanner from '../assets/images/banner.png'
 // logging in requires more context to be used. i'll take care of that later
 export default function Footer() {
 
+  // :uhhh:
   let [visibility, setVisibility] = useState(true)
   let [showAbout, setShowAbout] = useState(false)
+  let [showLogin, setShowLogin] = useState(false)
+
   let {cyRef} = useContext(CytoscapeContext)
 
   // inline this instead of making it its own function?
@@ -122,7 +126,7 @@ export default function Footer() {
           </div>
           <div className="ftr_sep admin none"></div>
           <div className="ftr_btn admin">
-            <a href="#" className="btn_text" onClick="showlogin()" id="logina">
+            <a href="#" className="btn_text" onClick={() => setShowLogin(true)} id="logina">
               <FontAwesomeIcon icon={faFilePen} className="navico" />
               <span className="resp-text">edit</span>
             </a>
@@ -139,8 +143,13 @@ export default function Footer() {
 
 
       {// apparently this is how you do this and i hate it too
-       !showAbout ? null :
-       <About close={() => {setShowAbout(!showAbout)}}/>
+        !showAbout ? null :
+        <About close={() => {setShowAbout(false)}}/>
+      }
+
+      {
+        !showLogin ? null :
+        <Login close={() => {setShowLogin(false)}}/>
       }
 
     </>
