@@ -52,9 +52,9 @@ export default function Footer() {
   // cause it has an animation unlike forms
   return (
     <>
-      <link rel="preload" as="image" src="../assets/images/banner-awake.png" />
-      <link rel="preload" as="image" src="../assets/images/banner-resp.png" />
-      <link rel="preload" as="image" src="../assets/images/banner-resp-awake.png" />
+      <link rel="preload" as="image" href="../assets/images/banner-awake.png" />
+      <link rel="preload" as="image" href="../assets/images/banner-resp.png" />
+      <link rel="preload" as="image" href="../assets/images/banner-resp-awake.png" />
       {visibility ? null :
         // no need for restoreui_i anymore
         // inert bs: https://github.com/facebook/react/issues/17157#issuecomment-1687842532
