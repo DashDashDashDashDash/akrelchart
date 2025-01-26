@@ -1,5 +1,7 @@
 import { useState, useContext } from 'react'
+
 import { CytoscapeContext } from '../cytoscapeContext'
+import { LoginContext } from '../dbloginContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesDown } from '../assets/icons/footer/faAnglesDown'
@@ -31,6 +33,7 @@ export default function Footer() {
   let [showLogin, setShowLogin] = useState(false)
 
   let {cyRef} = useContext(CytoscapeContext)
+  let acc = useContext(LoginContext)
 
   // inline this instead of making it its own function?
   function toggleVisible() {
@@ -104,28 +107,29 @@ export default function Footer() {
             </a>
           </div>
         </nav>
-        <nav className="ftr_sub ftr_usr">
-          <div id="loginstr" className="admin none">
+        <nav className={"ftr_sub ftr_usr" + (!acc.accountState.username ? '' : ' ftr_admin')}>
+          {/* this looks... silly */}
+          <div id="loginstr" className={"admin" + (acc.accountState.username ? '' : " none")}>
             <FontAwesomeIcon icon={faUser} className="navico" />
             <span className="resp-text">logged in as</span>
-            <span id="username">guest</span>
+            <span id="username">{acc.accountState.displayName}</span>
           </div>
-          <div className="ftr_sep admin none"></div>
-          <div className="ftr_btn admin none">
+          <div className={"ftr_sep admin" + (acc.accountState.username ? '' : " none")}></div>
+          <div className={"ftr_btn admin" + (acc.accountState.username ? '' : " none")}>
             <a href="#" className="btn_text" onClick="showpwchange()" id="pwa">
               <FontAwesomeIcon icon={faKey} className="navico" />
               <span className="resp-text">change password</span>
             </a>
           </div>
-          <div className="ftr_sep admin none"></div>
-          <div className="ftr_btn admin none">
+          <div className={"ftr_sep admin" + (acc.accountState.username ? '' : " none")}></div>
+          <div className={"ftr_btn admin" + (acc.accountState.username ? '' : " none")}>
             <a href="#" className="btn_text" onClick="logout()" id="logout">
               <FontAwesomeIcon icon={faRightFromBracket} className="navico" />
               <span className="resp-text">logout</span>
             </a>
           </div>
-          <div className="ftr_sep admin none"></div>
-          <div className="ftr_btn admin">
+          <div className={"ftr_sep admin" + (!acc.accountState.username ? '' : " none")}></div>
+          <div className={"ftr_btn admin" + (!acc.accountState.username ? '' : " none")}>
             <a href="#" className="btn_text" onClick={() => setShowLogin(true)} id="logina">
               <FontAwesomeIcon icon={faFilePen} className="navico" />
               <span className="resp-text">edit</span>

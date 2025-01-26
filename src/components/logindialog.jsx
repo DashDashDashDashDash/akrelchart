@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+
+import { LoginContext } from '../dbloginContext'
 
 import './logindialog.css'
 import LoginBanner from '../assets/images/login-logo.svg'
@@ -9,6 +11,17 @@ export default function Login({close}) {
   let [showLoginButton, setShowLoginButton] = useState(false)
   let [username, setUsername] = useState('')
   let [password, setPassword] = useState('')
+
+  let acc = useContext(LoginContext)
+
+  function login(that) {
+    (async function() {
+      await acc.login(that)
+      // should be fine
+      that.elements[1].value = ""
+      close()
+    })()
+  }
 
   function checklogin(e) {
     if (e.target.name === 'user') {
@@ -27,8 +40,11 @@ export default function Login({close}) {
   }, [username, password])
 
   return (
-    <div id="login" className="center" inert>
-      <form id="loginform" onsubmit="login(this)">
+    <div id="login" className="center">
+      <form id="loginform" onSubmit={(e) => {
+              e.preventDefault()
+              login(e.target)
+            }}>
         <div id="close_wrapper">
           <a href="#" className="close-button" onClick={close}>
             <div className="in">

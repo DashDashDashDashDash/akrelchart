@@ -1,3 +1,5 @@
+// these could be placed in some other components instead, probably
+
 function rename(obj, oldKey, newKey) {
   obj[newKey] = obj[oldKey];
   delete obj[oldKey];
@@ -58,4 +60,3 @@ export async function load() {
   // PLEASE LET THIS BE TEMPORARY FUTURE ME
   return [characters, events, chartochar, chartoevent]
 }
-

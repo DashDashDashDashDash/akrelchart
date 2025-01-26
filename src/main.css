@@ -107,6 +107,11 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url(./assets/fonts/JetBrainsMono-Regular.woff2) format('woff2');
+}
+
 .none {
   display: none !important;
 }
