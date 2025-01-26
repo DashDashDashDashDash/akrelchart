@@ -51,6 +51,11 @@ export default function Footer() {
     }
   }
 
+  function logout() {
+    acc.logout()
+    setShowLogin(true)
+  }
+
   // footer visibility should be like that on the css
   // cause it has an animation unlike forms
   return (
@@ -123,7 +128,7 @@ export default function Footer() {
           </div>
           <div className={"ftr_sep admin" + (acc.accountState.username ? '' : " none")}></div>
           <div className={"ftr_btn admin" + (acc.accountState.username ? '' : " none")}>
-            <a href="#" className="btn_text" onClick="logout()" id="logout">
+            <a href="#" className="btn_text" onClick={() => {logout()}} id="logout">
               <FontAwesomeIcon icon={faRightFromBracket} className="navico" />
               <span className="resp-text">logout</span>
             </a>

@@ -46,8 +46,27 @@ export function LoginProvider({children}) {
     }
   }
 
+  async function logout() {
+    // basically no way for this to fail as this can only be called while logged in
+    let r = await fetch("https://api.ptilopsis.network/logout", {
+      credentials: "include"
+    })
+
+    if (r.ok) {
+      // should be easy to reimplement the closedialog if i include account logic
+      // into the conditional for when to show the dialogs themselves
+      //closedialog()
+      setAccountState({
+        username: '',
+        displayName: 'Guest'
+      })
+    }
+
+
+  }
+
   return (
-    <LoginContext.Provider value={{accountState, login}}>
+    <LoginContext.Provider value={{accountState, login, logout}}>
       {children}
     </LoginContext.Provider>
   )
