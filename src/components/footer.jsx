@@ -67,10 +67,9 @@ export default function Footer() {
       <link rel="preload" as="image" href="../assets/images/banner-resp-awake.png" />
       {visibility ? null :
         // no need for restoreui_i anymore
-        // inert bs: https://github.com/facebook/react/issues/17157#issuecomment-1687842532
        <>
          <div id="restoreui-area">
-           <div className="restoreui_v" id="restoreui" inert={visibility ? '' : undefined}>
+           <div className="restoreui_v" id="restoreui">
              <a href="#" onClick={() => { toggleVisible() }}>
                <div id="unhider">
                  <FontAwesomeIcon icon={faAnglesUp} size={"2xl"} />
