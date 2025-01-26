@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDiscord } from '../assets/icons/about/faDiscord'
-import { faFeather } from '../assets/icons/about/faFeather'
-import { faGithub } from '../assets/icons/about/faGithub'
+import { faDiscord } from '../../assets/icons/about/faDiscord'
+import { faFeather } from '../../assets/icons/about/faFeather'
+import { faGithub } from '../../assets/icons/about/faGithub'
 
-import "./dialog.css"
+import "../dialog.css"
 import "./about.css"
-import AboutBanner from '../assets/images/login-logo.svg'
+import AboutBanner from '../../assets/images/login-logo.svg'
 
 export default function About({close}) {
 

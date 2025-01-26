@@ -1,4 +1,4 @@
-import './dialog.css'
+import '../dialog.css'
 import './passwordchange.css'
 
 

@@ -1,25 +1,25 @@
 import { useState, useContext } from 'react'
 
-import { CytoscapeContext } from '../cytoscapeContext'
-import { LoginContext } from '../dbloginContext'
+import { CytoscapeContext } from '../../cytoscapeContext'
+import { LoginContext } from '../../dbloginContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnglesDown } from '../assets/icons/footer/faAnglesDown'
-import { faMagnifyingGlass } from '../assets/icons/footer/faMagnifyingGlass'
-import { faTextSize } from '../assets/icons/footer/faTextSize'
-import { faUser } from '../assets/icons/footer/faUser'
-import { faKey } from '../assets/icons/footer/faKey'
-import { faRightFromBracket } from '../assets/icons/footer/faRightFromBracket'
-import { faFilePen } from '../assets/icons/footer/faFilePen'
-import { faCircleQuestion } from '../assets/icons/footer/faCircleQuestion'
-import { faAnglesUp } from '../assets/icons/footer/faAnglesUp'
+import { faAnglesDown } from '../../assets/icons/footer/faAnglesDown'
+import { faMagnifyingGlass } from '../../assets/icons/footer/faMagnifyingGlass'
+import { faTextSize } from '../../assets/icons/footer/faTextSize'
+import { faUser } from '../../assets/icons/footer/faUser'
+import { faKey } from '../../assets/icons/footer/faKey'
+import { faRightFromBracket } from '../../assets/icons/footer/faRightFromBracket'
+import { faFilePen } from '../../assets/icons/footer/faFilePen'
+import { faCircleQuestion } from '../../assets/icons/footer/faCircleQuestion'
+import { faAnglesUp } from '../../assets/icons/footer/faAnglesUp'
 
 import About from './about'
 import Login from './logindialog'
 import PasswordChange from './passwordchange'
 
 import './footer.css'
-import ptiloBanner from '../assets/images/banner.png'
+import ptiloBanner from '../../assets/images/banner.png'
 
 // dialogs that are brought up by the footer should be the footer's children...
 // but i can't really use the children prop notation to just nest the children

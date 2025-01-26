@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
 
-import { LoginContext } from '../dbloginContext'
+import { LoginContext } from '../../dbloginContext'
 
 import './logindialog.css'
-import LoginBanner from '../assets/images/login-logo.svg'
+import LoginBanner from '../../assets/images/login-logo.svg'
 
 
 export default function Login({close}) {
