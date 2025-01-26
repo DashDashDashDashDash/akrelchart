@@ -16,6 +16,7 @@ import { faAnglesUp } from '../assets/icons/footer/faAnglesUp'
 
 import About from './about'
 import Login from './logindialog'
+import PasswordChange from './passwordchange'
 
 import './footer.css'
 import ptiloBanner from '../assets/images/banner.png'
@@ -31,6 +32,7 @@ export default function Footer() {
   let [visibility, setVisibility] = useState(true)
   let [showAbout, setShowAbout] = useState(false)
   let [showLogin, setShowLogin] = useState(false)
+  let [showPwChange, setShowPwChange] = useState(false)
 
   let {cyRef} = useContext(CytoscapeContext)
   let acc = useContext(LoginContext)
@@ -121,7 +123,7 @@ export default function Footer() {
           </div>
           <div className={"ftr_sep admin" + (acc.accountState.username ? '' : " none")}></div>
           <div className={"ftr_btn admin" + (acc.accountState.username ? '' : " none")}>
-            <a href="#" className="btn_text" onClick="showpwchange()" id="pwa">
+            <a href="#" className="btn_text" onClick={() => setShowPwChange(true)} id="pwa">
               <FontAwesomeIcon icon={faKey} className="navico" />
               <span className="resp-text">change password</span>
             </a>
@@ -161,6 +163,10 @@ export default function Footer() {
         <Login close={() => {setShowLogin(false)}}/>
       }
 
+      {
+        !showPwChange ? null :
+        <PasswordChange close={() => {setShowPwChange(false)}}/>
+      }
     </>
   )
 }
