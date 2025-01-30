@@ -36,6 +36,8 @@ export default function Footer() {
 
   let {cyRef} = useContext(CytoscapeContext)
   let acc = useContext(LoginContext)
+  // "logged in" when true, "logged out" when false
+  let loggedInClass = acc.accountState.username ? '' : ' none'
 
   // inline this instead of making it its own function?
   function toggleVisible() {
@@ -113,29 +115,29 @@ export default function Footer() {
             </a>
           </div>
         </nav>
-        <nav className={"ftr_sub ftr_usr" + (!acc.accountState.username ? '' : ' ftr_admin')}>
-          {/* this looks... silly */}
-          <div id="loginstr" className={"admin" + (acc.accountState.username ? '' : " none")}>
+        {/* special since it doesn't use the none class */}
+        <nav className={"ftr_sub ftr_usr" + (loggedInClass ? '' : ' ftr_admin')}>
+          <div id="loginstr" className={"admin" + loggedInClass}>
             <FontAwesomeIcon icon={faUser} className="navico" />
             <span className="resp-text">logged in as</span>
             <span id="username">{acc.accountState.displayName}</span>
           </div>
-          <div className={"ftr_sep admin" + (acc.accountState.username ? '' : " none")}></div>
-          <div className={"ftr_btn admin" + (acc.accountState.username ? '' : " none")}>
+          <div className={"ftr_sep admin" + loggedInClass}></div>
+          <div className={"ftr_btn admin" + loggedInClass}>
             <a href="#" className="btn_text" onClick={() => setShowPwChange(true)} id="pwa">
               <FontAwesomeIcon icon={faKey} className="navico" />
               <span className="resp-text">change password</span>
             </a>
           </div>
-          <div className={"ftr_sep admin" + (acc.accountState.username ? '' : " none")}></div>
-          <div className={"ftr_btn admin" + (acc.accountState.username ? '' : " none")}>
+          <div className={"ftr_sep admin" + loggedInClass}></div>
+          <div className={"ftr_btn admin" + loggedInClass}>
             <a href="#" className="btn_text" onClick={() => {logout()}} id="logout">
               <FontAwesomeIcon icon={faRightFromBracket} className="navico" />
               <span className="resp-text">logout</span>
             </a>
           </div>
-          <div className={"ftr_sep admin" + (!acc.accountState.username ? '' : " none")}></div>
-          <div className={"ftr_btn admin" + (!acc.accountState.username ? '' : " none")}>
+          <div className={"ftr_sep admin" + !loggedInClass}></div>
+          <div className={"ftr_btn admin" + !loggedInClass}>
             <a href="#" className="btn_text" onClick={() => setShowLogin(true)} id="logina">
               <FontAwesomeIcon icon={faFilePen} className="navico" />
               <span className="resp-text">edit</span>
