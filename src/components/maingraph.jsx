@@ -1,9 +1,13 @@
 import { useContext, useEffect, useState } from "react"
+
 import CytoscapeComponent from "react-cytoscapejs"
 import LoadingScreen from './loadingscreen.jsx'
+import Popout from "./popout.jsx"
 import { CytoscapeContext } from "../cytoscapeContext"
+
 import { load } from "../db"
 import { MainGraphStyle } from "./graphconfig"
+
 import mobileCheck from "../mobilecheck.js"
 import './maingraph.css'
 
@@ -11,6 +15,8 @@ export default function MainGraph() {
   let { cyRef } = useContext(CytoscapeContext)
   let [loadStateText, setLoadStateText] = useState("querying database") // huh
   let [loadWarnText, setLoadWarnText] = useState('')
+  let [popoutChar, setPopoutChar] = useState(null)
+  let [showPopout, setShowPopout] = useState(false)
 
   useEffect(() => {
     async function loadgraph() {
@@ -57,9 +63,24 @@ export default function MainGraph() {
           setLoadWarnText('')
         }, 0)
       })
+
+      cyRef.current.on('select', 'node', async function(e) {
+        var node = e.target
+        cyRef.current.animate({
+          pan: {
+            x: -node.position('x') * cyRef.current.zoom() + window.innerWidth / 1.5,
+            y: -node.position('y') * cyRef.current.zoom() + window.innerHeight
+          },
+          easing: "ease-out-quad"
+        })
+        // let the popout itself decide what to do
+        setShowPopout(true)
+        setPopoutChar(node) // node.data only?
+      })
     }
   }, [cyRef]) // correct? not?
 
+  // todo: instead of closing the popout like that, emit the unselect signal
   return (
     <>
       <LoadingScreen loadstate={loadStateText} warnstate={loadWarnText}/>
@@ -69,6 +90,7 @@ export default function MainGraph() {
                           textureOnViewport={true}
                           stylesheet={MainGraphStyle}
                           cy={(cy) => (cyRef.current = cy)}/>
+      <Popout character={popoutChar} show={showPopout} close={() => {setShowPopout(false)}}/>
     </>
   )
 }
